@@ -21,7 +21,13 @@
         </div>
     </header>
     <div id="stat-box-container">
-        <div class="stat-box">
+        {% for stat in stats %}
+            <div class="stat-box">
+                <h4>{{ stat.name }}</h4>
+                <p>{{ stat.value }}</p>
+            </div>
+        {% endfor %}
+        <!-- <div class="stat-box">
             <h4>Avg</h4>
             <p>.300</p>
         </div>
@@ -36,7 +42,7 @@
         <div class="stat-box">
             <h4>HR</h4>
             <p>30</p>
-        </div>
+        </div> -->
     </div>
 </body>
 </html>
