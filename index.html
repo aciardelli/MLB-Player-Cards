@@ -14,14 +14,24 @@
         <img id="RaysLogo" src="rays_logo.png" alt="Tampa Bay Rays Logo">
         <h1 id="heading1">Rays Player Cards</h1>
     </header>
-    <form id="playerSelect" action="/player" method="GET">
+    <!-- <form id="playerSelect" action="http://127.0.0.1:5000/player/Wander-Franco" method="get">
         <label for="player">Choose a player:</label>
+        <input type="text" id="playerName">
         <select name="players" id="players">
             <option class="playerID" value="WanderFranco">Wander Franco</option>
             <option class="playerID" value="RandyArozarena">Randy Arozarena</option>
             <option class="playerID" value="YandyDiaz">Yandy Diaz</option>
             <option class="playerID" value="BrandonLowe">Brandon Lowe</option>
-        </select>
+        </select> -->
+        <!-- <button>Submit</button> -->
+        <!-- <script src="script.js"></script> -->
+    <!-- </form> --> 
+    <form id="playerSelect">
+        <label for="playerName">Choose a player:</label>
+        <input type="text" id="playerName" required>
+        <button class="submitBtn" type="submit" onclick="window.location.href='player_stats.html'">
+            Submit
+        </button>
     </form>
 </body>
 </html>

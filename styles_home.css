@@ -5,7 +5,8 @@
 }
 
 #heading1{
-    color: #F5D131;
+    /* color: #F5D131; */
+    color: #fff;
     font-size: 50px;
     margin: 0px;
     font-family: "Ubuntu";
@@ -13,9 +14,10 @@
 
 header{
     text-align: center;
-    background-color: navy;
+    background-color: #092C5C;
     margin-top: 0px;
     padding: 20px;
+    box-shadow: 5px 5px 5px;
 }
 
 #RaysLogo{
@@ -38,12 +40,11 @@ body{
     margin: 0px
 }
 
-#players{
+#playerName{
     height: 50px;
-    width: 1000px;
+    width: 500px;
     font-size: 30px;
     border-radius: 10px;
-
 }
 
 .playerID{
