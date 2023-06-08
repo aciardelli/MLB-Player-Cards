@@ -1,4 +1,17 @@
-function createPlayerDiv(player){
+function createPlayerDiv(){
+    const form = document.querySelector('#new-player-form')
+    const input = document.querySelector('.player-input')
+    const list_el = document.querySelector('#players')
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const player = input.value;
+
+        if (!player){
+            alert("Please enter a player")
+            return
+        }
     /*
         <!-- <div class="player">
 
@@ -22,7 +35,7 @@ function createPlayerDiv(player){
 
             </div> -->
     */
-
+    const playerStats = getStats(player)
     // player div
     const player_el = document.createElement("div");
     player_el.classList.add("player");
@@ -55,7 +68,7 @@ function createPlayerDiv(player){
     // avg-val p
     const player_avg_val = document.createElement("p");
     player_avg_val.classList.add("avg-val");
-    player_avg_val.innerText = ".300";
+    player_avg_val.innerText = playerStats.xwoba;
 
     // ops p
     const player_ops_el = document.createElement("p");
@@ -65,7 +78,7 @@ function createPlayerDiv(player){
     // ops-val p
     const player_ops_val = document.createElement("p");
     player_ops_val.classList.add("ops-val");
-    player_ops_val.innerText = ".800";
+    player_ops_val.innerText = playerStats.bb_percent;
 
     // actions (buttons)
     const player_actions_el = document.createElement("div")
@@ -101,12 +114,16 @@ function createPlayerDiv(player){
     // adds remove btn to player
     player_el.appendChild(player_actions_el)
 
-    const list_el = document.getElementById("players");
     list_el.appendChild(player_el);
+})
 }
 
-function getStats(){
-    fetch('https://api.example.com/data')
+
+function getStats(player){
+    let player_name = player.replace(/ /g, "-");
+    const url = "http://127.0.0.1:5000/player/" + player_name
+
+    fetch(url)
     .then(response => {
     if (!response.ok) {
       throw new Error('Request failed');
@@ -124,22 +141,6 @@ function getStats(){
 }
 
 window.addEventListener('load', () => {
-    const form = document.querySelector('#new-player-form')
-    const input = document.querySelector('.player-input')
-    const list_el = document.querySelector('#players')
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const player = input.value;
-
-        if (!player){
-            alert("Please enter a player")
-            return
-        }
-        
-        createPlayerDiv(player)
+        createPlayerDiv()
 
     })
-
-})
