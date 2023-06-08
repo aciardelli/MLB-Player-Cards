@@ -4,34 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles_home.css">
+    <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Ubuntu&display=swap" rel="stylesheet">
     <title>MLB Player Cards</title>
 </head>
 <body>
     <header>
-        <img id="MLBlogo" src="Major_League_Baseball_logo.png" alt="MLB Logo">
-        <img id="RaysLogo" src="rays_logo.png" alt="Tampa Bay Rays Logo">
-        <h1 id="heading1">Rays Player Cards</h1>
+        <!-- <img id="mlb-logo" src="./pictures/Major_League_Baseball_logo.png" alt="MLB Logo"> -->
+        <!-- <img id="rays-logo" src="./pictures/rays_logo.png" alt="Tampa Bay Rays Logo"> -->
+        <h1>Rays Player Cards</h1>
     </header>
-    <!-- <form id="playerSelect" action="http://127.0.0.1:5000/player/Wander-Franco" method="get">
-        <label for="player">Choose a player:</label>
-        <input type="text" id="playerName">
-        <select name="players" id="players">
-            <option class="playerID" value="WanderFranco">Wander Franco</option>
-            <option class="playerID" value="RandyArozarena">Randy Arozarena</option>
-            <option class="playerID" value="YandyDiaz">Yandy Diaz</option>
-            <option class="playerID" value="BrandonLowe">Brandon Lowe</option>
-        </select> -->
-        <!-- <button>Submit</button> -->
-        <!-- <script src="script.js"></script> -->
-    <!-- </form> --> 
-    <form id="playerSelect">
-        <label for="playerName">Choose a player:</label>
-        <input type="text" id="playerName" required>
-        <button class="submitBtn" type="submit" onclick="window.location.href='player_stats.html'">
-            Submit
-        </button>
+    <form id="new-player-form">
+        <!-- <label for="playerName">Choose a player:</label> -->
+        <input type="text" class="player-input" placeholder="Input a player">
+        <input type="submit" class="player-submit" value="Add player">
     </form>
+    <main>
+        <section class="player-list">
+            <h2>Players</h2>
+
+            <div id="players">
+
+                <!-- <div class="player">
+
+                    <div class="content">
+
+                        <p class="player-name">Joe Random</p>
+                        <div class = "stats">
+                            <div class="stat-box">
+                                <p class="avg">Avg</p><br>
+                                <p class="avg-val">.300</p>
+                            </div>
+                            <div class="stat-box">
+                                <p class="ops">OPS</p><br>
+                                <p class="ops-val">.850</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="remove">Remove</button>
+                    </div>
+
+                </div> -->
+
+            </div>
+
+        </section>
+    </main>
+    <script src="main.js"></script>
 </body>
 </html>
