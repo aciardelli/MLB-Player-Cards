@@ -142,5 +142,4 @@ function getStats(player){
 
 window.addEventListener('load', () => {
         createPlayerDiv()
-
     })
