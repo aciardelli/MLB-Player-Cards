@@ -1,5 +1,17 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
+# import pandas as pd
+# from pybaseball import statcast_batter_percentile_ranks
+# from pybaseball import statcast_batter_expected_stats
+# from pybaseball import batting_stats
+
+# # Retrieve statcast data
+# data = batting_stats(2023)
+
+# column_names = list(data.columns)
+
+# # Display all column names
+# for column in column_names:
+#     print(column)
+
 import pybaseball
 import pandas as pd
 
@@ -29,15 +41,5 @@ def merge_stats(player):
     print(statDict)
     return statDict
 
-app = Flask(__name__)
-CORS(app)
 
-@app.route("/player/<string:player_name>", methods=["GET"])
-def playerData(player_name):
-    player_name = player_name.replace("-"," ")
-    data = merge_stats(player_name)
-    return jsonify(data)
-
-if __name__ == "__main__":
-    app.run(debug=True, port=5000)
-
+merge_stats("Wander Franco")

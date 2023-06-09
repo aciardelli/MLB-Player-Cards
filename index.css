@@ -23,7 +23,7 @@ header{
     background-color: #092C5C;
     margin-top: 0px;
     padding: 20px;
-    box-shadow: 5px 5px 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 header h1 {
@@ -95,6 +95,10 @@ main {
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
+}
+
+.player {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 #players .player .content {

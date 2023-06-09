@@ -1,17 +1,17 @@
-function createPlayerDiv(){
-    const form = document.querySelector('#new-player-form')
-    const input = document.querySelector('.player-input')
-    const list_el = document.querySelector('#players')
+async function createPlayerDiv() {
+  const form = document.querySelector("#new-player-form");
+  const input = document.querySelector(".player-input");
+  const list_el = document.querySelector("#players");
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const player = input.value;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-        if (!player){
-            alert("Please enter a player")
-            return
-        }
+    const player = input.value;
+
+    if (!player) {
+      alert("Please enter a player");
+      return;
+    }
     /*
         <!-- <div class="player">
 
@@ -35,7 +35,7 @@ function createPlayerDiv(){
 
             </div> -->
     */
-    const playerStats = getStats(player)
+    const playerStats = await getStats(player);
     // player div
     const player_el = document.createElement("div");
     player_el.classList.add("player");
@@ -60,47 +60,52 @@ function createPlayerDiv(){
     const player_statbox2_el = document.createElement("div");
     player_statbox2_el.classList.add("stat-box");
 
-    // avg p
-    const player_avg_el = document.createElement("p");
-    player_avg_el.classList.add("avg");
-    player_avg_el.innerText = "Avg";
+    const player_statbox3_el = document.createElement("div");
+    player_statbox3_el.classList.add("stat-box");
 
-    // avg-val p
-    const player_avg_val = document.createElement("p");
-    player_avg_val.classList.add("avg-val");
-    player_avg_val.innerText = playerStats.xwoba;
+    // fWar p
+    const player_fwar_el = document.createElement("p");
+    player_fwar_el.classList.add("fwar");
+    player_fwar_el.innerText = "fWAR\n" + playerStats.fwar;
 
-    // ops p
-    const player_ops_el = document.createElement("p");
-    player_ops_el.classList.add("ops");
-    player_ops_el.innerText = "OPS";
+    // xWOBA p
+    const player_xwoba_el = document.createElement("p");
+    player_xwoba_el.classList.add("xwoba");
+    player_xwoba_el.innerText = "xWOBA\n"+playerStats.xwoba+"%";
+    player_statbox2_el.style.backgroundColor = calculateColor(playerStats.xwoba)
+    console.log(calculateColor(playerStats.xwoba))
 
-    // ops-val p
-    const player_ops_val = document.createElement("p");
-    player_ops_val.classList.add("ops-val");
-    player_ops_val.innerText = playerStats.bb_percent;
+    // oaa p
+    const player_oaa_el = document.createElement("p");
+    player_oaa_el.classList.add("oaa");
+    player_oaa_el.innerText = "OAA\n"+playerStats.oaa+"%";
+    player_statbox3_el.style.backgroundColor = calculateColor(playerStats.oaa)
+    console.log(calculateColor(playerStats.oaa))
 
     // actions (buttons)
-    const player_actions_el = document.createElement("div")
-    player_actions_el.classList.add("actions")
+    const player_actions_el = document.createElement("div");
+    player_actions_el.classList.add("actions");
 
-    const player_remove_btn = document.createElement("button")
-    player_remove_btn.classList.add("remove")
+    const player_remove_btn = document.createElement("button");
+    player_remove_btn.classList.add("remove");
+    player_remove_btn.innerText = "Remove";
 
     // adds remove button to actions
-    player_actions_el.appendChild(player_remove_btn)
+    player_actions_el.appendChild(player_remove_btn);
 
-    // adding avg to statbox1
-    player_statbox1_el.appendChild(player_avg_el);
-    player_statbox1_el.appendChild(player_avg_val);
+    //adding fwar to statbox1
+    player_statbox1_el.appendChild(player_fwar_el);
 
-    // adding ops and ops val to statbox2
-    player_statbox2_el.appendChild(player_ops_el);
-    player_statbox2_el.appendChild(player_ops_val);
+    // adding xwoba to statbox2
+    player_statbox2_el.appendChild(player_xwoba_el);
 
-    // add both statboxes to stats
+    // adding oaa to statbox3
+    player_statbox3_el.appendChild(player_oaa_el);
+
+    // add statboxes to stats
     player_stats_el.appendChild(player_statbox1_el);
     player_stats_el.appendChild(player_statbox2_el);
+    player_stats_el.appendChild(player_statbox3_el);
 
     // adds player name to content
     player_content_el.appendChild(player_name_el);
@@ -112,34 +117,49 @@ function createPlayerDiv(){
     player_el.appendChild(player_content_el);
 
     // adds remove btn to player
-    player_el.appendChild(player_actions_el)
+    player_el.appendChild(player_actions_el);
 
     list_el.appendChild(player_el);
-})
+  });
 }
 
-
-function getStats(player){
-    let player_name = player.replace(/ /g, "-");
-    const url = "http://127.0.0.1:5000/player/" + player_name
-
-    fetch(url)
-    .then(response => {
-    if (!response.ok) {
-      throw new Error('Request failed');
+function calculateColor(percentile) {
+    const inc = 255 / 50;
+    let red, green, blue
+    if(percentile >= 50){
+        red = 255;
+        green = 255 - (inc * (percentile - 50))
+        blue = 255 - (inc * (percentile - 50))
     }
-    return response.json();
-    })
-    .then(data => {
-    // Process the response data
+    else{
+        blue = 255;
+        green = 255 - (inc * (50 - percentile))
+        red = 255 - (inc * (50 - percentile))
+    }
+    return `rgb(${red}, ${green}, ${blue})`
+  }
+  
+
+async function getStats(player) {
+  let player_name = player.replace(/ /g, "-");
+  const url = "http://127.0.0.1:5000/player/" + player_name;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error("Request failed");
+    }
+
+    const data = await response.json();
     console.log(data);
-    })
-    .catch(error => {
-    // Handle any errors
+    return data; // Return the retrieved data
+  } catch (error) {
     console.error(error);
-    });
+    throw error; // Re-throw the error to be caught in the caller function
+  }
 }
 
-window.addEventListener('load', () => {
-        createPlayerDiv()
-    })
+window.addEventListener("load", () => {
+  createPlayerDiv();
+});
