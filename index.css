@@ -112,6 +112,11 @@ main {
     text-align: center;
 }
 
+.player-img {
+    width: 100px;
+    height: auto;
+}
+
 #players .player .actions {
     display: flex;
     margin: 0 -5px;
@@ -141,6 +146,7 @@ main {
     display: flex;
     flex-direction: row;
     text-align: center;
+    align-items: center;
 }
 
 .stat-box {

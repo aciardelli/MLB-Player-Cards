@@ -53,6 +53,12 @@ async function createPlayerDiv() {
     const player_stats_el = document.createElement("div");
     player_stats_el.classList.add("stats");
 
+    // player pic div
+    const player_img_el = document.createElement("img");
+    player_img_el.classList.add("player-img");
+    player_img_el.src = "./pictures/blank_headshot.jpeg";
+    player_img_el.alt = "Image of " + player;
+
     // stat-box div
     const player_statbox1_el = document.createElement("div");
     player_statbox1_el.classList.add("stat-box");
@@ -103,6 +109,7 @@ async function createPlayerDiv() {
     player_statbox3_el.appendChild(player_oaa_el);
 
     // add statboxes to stats
+    player_stats_el.appendChild(player_img_el);
     player_stats_el.appendChild(player_statbox1_el);
     player_stats_el.appendChild(player_statbox2_el);
     player_stats_el.appendChild(player_statbox3_el);
