@@ -14,8 +14,8 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: var(--lightblue);
-    color: #fff
+    background-color: #f5f5f5;
+    color: rgb(51, 51, 51)
 }
 
 header{
@@ -24,12 +24,25 @@ header{
     margin-top: 0px;
     padding: 20px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+}
+
+#mlb-logo {
+    height: 75px;
+    width: auto;
+}
+
+#rays-logo {
+    height: 100px;
+    width: auto;
 }
 
 header h1 {
     font-size: 50px;
     margin: 0px;
     font-family: "Ubuntu";
+    color: #fff;
 }
 
 #new-player-form {
@@ -66,6 +79,7 @@ input, button {
 
 .player-submit:hover {
     opacity: .8;
+    color: lightgreen;
 }
 
 .player-submit:active {
@@ -128,6 +142,10 @@ main {
     font-weight: 700;
     text-transform: uppercase;
     transition: .4s;
+}
+
+.remove:hover {
+    color: red;
 }
 
 .player .actions button:hover {

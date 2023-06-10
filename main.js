@@ -1,4 +1,4 @@
-async function createPlayerDiv() {
+async function loadHTML() {
   const form = document.querySelector("#new-player-form");
   const input = document.querySelector(".player-input");
   const list_el = document.querySelector("#players");
@@ -127,6 +127,10 @@ async function createPlayerDiv() {
     player_el.appendChild(player_actions_el);
 
     list_el.appendChild(player_el);
+
+    player_remove_btn.addEventListener("click", () => {
+        list_el.removeChild(player_el)
+    })
   });
 }
 
@@ -168,5 +172,5 @@ async function getStats(player) {
 }
 
 window.addEventListener("load", () => {
-  createPlayerDiv();
+  loadHTML();
 });
