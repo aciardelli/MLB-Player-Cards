@@ -74,6 +74,12 @@ async function loadHTML() {
     player_fwar_el.classList.add("fwar");
     player_fwar_el.innerText = "fWAR\n" + playerStats.fwar;
 
+    // fWar % p
+    const player_fwar_pct = document.createElement("p");
+    player_fwar_pct.classList.add("fwar");
+    player_fwar_pct.innerText = playerStats.fwar_pct + "%";
+    player_statbox1_el.style.backgroundColor = calculateColor(playerStats.fwar_pct)
+
     // xWOBA p
     const player_xwoba_el = document.createElement("p");
     player_xwoba_el.classList.add("xwoba");
@@ -101,6 +107,7 @@ async function loadHTML() {
 
     //adding fwar to statbox1
     player_statbox1_el.appendChild(player_fwar_el);
+    player_statbox1_el.appendChild(player_fwar_pct);
 
     // adding xwoba to statbox2
     player_statbox2_el.appendChild(player_xwoba_el);
