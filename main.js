@@ -3,6 +3,8 @@ async function loadHTML() {
   const input = document.querySelector(".player-input");
   const list_el = document.querySelector("#players");
 
+  const remove_all = document.querySelector(".remove-all");
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -78,21 +80,25 @@ async function loadHTML() {
     const player_fwar_pct = document.createElement("p");
     player_fwar_pct.classList.add("fwar");
     player_fwar_pct.innerText = playerStats.fwar_pct + "%";
-    player_statbox1_el.style.backgroundColor = calculateColor(playerStats.fwar_pct)
+    player_statbox1_el.style.backgroundColor = calculateColor(
+      playerStats.fwar_pct
+    );
 
     // xWOBA p
     const player_xwoba_el = document.createElement("p");
     player_xwoba_el.classList.add("xwoba");
-    player_xwoba_el.innerText = "xWOBA\n"+playerStats.xwoba+"%";
-    player_statbox2_el.style.backgroundColor = calculateColor(playerStats.xwoba)
-    console.log(calculateColor(playerStats.xwoba))
+    player_xwoba_el.innerText = "xWOBA\n" + playerStats.xwoba + "%";
+    player_statbox2_el.style.backgroundColor = calculateColor(
+      playerStats.xwoba
+    );
+    console.log(calculateColor(playerStats.xwoba));
 
     // oaa p
     const player_oaa_el = document.createElement("p");
     player_oaa_el.classList.add("oaa");
-    player_oaa_el.innerText = "OAA\n"+playerStats.oaa+"%";
-    player_statbox3_el.style.backgroundColor = calculateColor(playerStats.oaa)
-    console.log(calculateColor(playerStats.oaa))
+    player_oaa_el.innerText = "OAA\n" + playerStats.oaa + "%";
+    player_statbox3_el.style.backgroundColor = calculateColor(playerStats.oaa);
+    console.log(calculateColor(playerStats.oaa));
 
     // actions (buttons)
     const player_actions_el = document.createElement("div");
@@ -136,27 +142,33 @@ async function loadHTML() {
     list_el.appendChild(player_el);
 
     player_remove_btn.addEventListener("click", () => {
-        list_el.removeChild(player_el)
-    })
+      list_el.removeChild(player_el);
+    });
+
+    remove_all.addEventListener("click", () => {
+      console.log("Submit button clicked!");
+      const players = document.querySelectorAll(".player");
+      players.forEach((player) => {
+        list_el.removeChild(player);
+      });
+    });
   });
 }
 
 function calculateColor(percentile) {
-    const inc = 255 / 50;
-    let red, green, blue
-    if(percentile >= 50){
-        red = 255;
-        green = 255 - (inc * (percentile - 50))
-        blue = 255 - (inc * (percentile - 50))
-    }
-    else{
-        blue = 255;
-        green = 255 - (inc * (50 - percentile))
-        red = 255 - (inc * (50 - percentile))
-    }
-    return `rgb(${red}, ${green}, ${blue})`
+  const inc = 255 / 50;
+  let red, green, blue;
+  if (percentile >= 50) {
+    red = 255;
+    green = 255 - inc * (percentile - 50);
+    blue = 255 - inc * (percentile - 50);
+  } else {
+    blue = 255;
+    green = 255 - inc * (50 - percentile);
+    red = 255 - inc * (50 - percentile);
   }
-  
+  return `rgb(${red}, ${green}, ${blue})`;
+}
 
 async function getStats(player) {
   let player_name = player.replace(/ /g, "-");

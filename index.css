@@ -175,6 +175,15 @@ main {
     margin: 20px;
 }
 
+.list-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.remove-all {
+    cursor: pointer;
+    font-weight: 700;
+}
 
 /* .player .actions .percentiles {
     cursor: pointer;
