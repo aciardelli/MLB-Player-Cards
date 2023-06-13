@@ -28,6 +28,26 @@ header{
     justify-content: space-between;
 }
 
+.title {
+    display: flex;
+    justify-content: space-between;
+    width: 575px;
+    align-items: center;
+}
+
+.nav1 {
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+    align-items: center;
+}
+
+.nav1 .nav-el {
+    color: #FFF;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
 #mlb-logo {
     height: 75px;
     width: auto;
@@ -47,6 +67,7 @@ header h1 {
 
 #new-player-form {
     display: flex;
+    padding: 20px;
 }
 
 input, button {
@@ -63,8 +84,10 @@ input, button {
     border-radius: 10px;
     border-color: black;
     background-color: #fff;
-    margin: 20px;
+    /* margin: 20px; */
+    margin: 10px;
     margin-right: 10px;
+    height: 40px;
 }
 
 .player-input::placeholder {
@@ -73,8 +96,11 @@ input, button {
 
 .player-submit {
     cursor: pointer;
-    margin-right: 20px;
+    margin-right: 10px;
     font-weight: 700;
+    /* height: 40px; */
+    /* margin-top: 10px; */
+    font-size: 15px;
 }
 
 .player-submit:hover {
@@ -93,13 +119,18 @@ main {
 
 .player-list {
     padding: 10px;
+    text-align: center;
 }
 
 .player-list h2 {
-    font-size: 25px;
+    font-size: 30px;
     margin: 0px;
     font-family: "Ubuntu";
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
+}
+
+#players {
+    padding-top: 10px;
 }
 
 #players .player {
@@ -129,6 +160,7 @@ main {
 .player-img {
     width: 100px;
     height: auto;
+    padding: 15px;
 }
 
 #players .player .actions {
@@ -178,11 +210,17 @@ main {
 .list-heading {
     display: flex;
     justify-content: space-between;
+    height: 50px;
 }
 
 .remove-all {
     cursor: pointer;
     font-weight: 700;
+    font-size: 15px;
+}
+
+.remove-all:hover {
+    color: red;
 }
 
 /* .player .actions .percentiles {
