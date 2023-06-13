@@ -62,7 +62,6 @@ def get_player_percentile(data, player):
     percentile = np.sum(sorted_data["WAR"] <= player_war) / len(sorted_data["WAR"]) * 100
     return round(percentile, 2)
 
-# Example usage
 data = pybaseball.batting_stats(2023)
 player = "Shohei Ohtani"  # Specify the player's name
 
