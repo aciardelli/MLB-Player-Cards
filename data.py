@@ -37,3 +37,14 @@ def merge_stats(player):
     statDict['fwar_pct'] = fg_stats[1]
     print(statDict)
     return statDict
+
+#### standings
+
+def standings_stats(league):
+    leagues = {"ALE":0, "ALC":1, "ALW":2, "NLE":3, "NLC":4, "NLW":5}
+    my_league = leagues[league]
+    data = pybaseball.standings()
+    my_data = data[my_league]
+    return my_data.to_dict()
+
+print(standings_stats("NLE"))

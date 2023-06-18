@@ -11,7 +11,6 @@ async function loadHTML() {
     const player = input.value;
 
     if (!player) {
-      alert("Please enter a player");
       return;
     }
     /*
@@ -183,10 +182,10 @@ async function getStats(player) {
 
     const data = await response.json();
     console.log(data);
-    return data; // Return the retrieved data
+    return data;
   } catch (error) {
     console.error(error);
-    throw error; // Re-throw the error to be caught in the caller function
+    throw error;
   }
 }
 
