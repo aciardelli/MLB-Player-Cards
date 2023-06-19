@@ -48,6 +48,13 @@ header{
     font-size: 1.5em;
 }
 
+input, button {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+}
+
 #mlb-logo {
     height: 75px;
     width: auto;
