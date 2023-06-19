@@ -48,6 +48,16 @@ header{
     font-size: 1.5em;
 }
 
+.nav-el:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.nav-el:active {
+    color: darkgrey;
+}
+
 #mlb-logo {
     height: 75px;
     width: auto;
@@ -105,7 +115,6 @@ input, button {
 
 .player-submit:hover {
     opacity: .8;
-    color: lightgreen;
 }
 
 .player-submit:active {

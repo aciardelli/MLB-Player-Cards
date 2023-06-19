@@ -48,6 +48,16 @@ header{
     font-size: 1.5em;
 }
 
+.nav-el:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.nav-el:active {
+    color: darkgrey;
+}
+
 input, button {
     appearance: none;
     border: none;
@@ -166,4 +176,8 @@ header h1 {
 
 .division-table td {
     padding-left: 20px;
+}
+
+.chart button {
+    cursor: pointer;
 }

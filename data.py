@@ -46,5 +46,3 @@ def standings_stats(league):
     data = pybaseball.standings()
     my_data = data[my_league]
     return my_data.to_dict()
-
-print(standings_stats("NLE"))
