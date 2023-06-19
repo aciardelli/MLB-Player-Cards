@@ -66,9 +66,9 @@
 # player_percentile = get_player_percentile(data, player)
 # print(f"{player}'s WAR is in the {player_percentile}th percentile.")
 
-from pybaseball import standings
+import pybaseball
 
-data = standings()
+data = pybaseball.standings()
 print(data)
 
 # from pybaseball import playerid_lookup, playerid_reverse_lookup
