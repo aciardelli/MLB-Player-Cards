@@ -71,9 +71,6 @@ import pybaseball
 data = pybaseball.standings()
 print(data)
 
-# Example usage
-data = pybaseball.batting_stats(2023)
-player = "Shohei Ohtani"  # Specify the player's name
 
 # player_id = playerid_lookup("fernando", "tatis jr", fuzzy=True)
 # player_name = playerid_reverse_lookup(player_id, key_type='fangraphs')
