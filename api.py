@@ -11,6 +11,11 @@ def playerData(player_name):
     data = merge_stats(player_name)
     return jsonify(data)
 
+@app.route("/standings/<string:league>", methods=["GET"])
+def getStandings(league):
+    data = standings_stats(league)
+    return data
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
 

@@ -12,9 +12,6 @@
 # for column in column_names:
 #     print(column)
 
-import pybaseball
-import pandas as pd
-
 # player_name, player_id, year, xwoba, xba, xslg, xiso, xobp, brl, brl_percent, exit_velocity, hard_hit_percent, k_percent, bb_percent
 # whiff_percent, sprint_speed, oaa
 
@@ -53,17 +50,31 @@ import pandas as pd
 # my_batter_data = batter_data[columns].iloc[0]
 # print(my_batter_data.to_dict())
 
-import pandas as pd
-import numpy as np
+# import pandas as pd
+# import numpy as np
 
-def get_player_percentile(data, player):
-    sorted_data = data.sort_values("WAR", ascending=False)
-    player_war = sorted_data.loc[sorted_data["Name"] == player, "WAR"].iloc[0]
-    percentile = np.sum(sorted_data["WAR"] <= player_war) / len(sorted_data["WAR"]) * 100
-    return round(percentile, 2)
+# def get_player_percentile(data, player):
+#     sorted_data = data.sort_values("WAR", ascending=False)
+#     player_war = sorted_data.loc[sorted_data["Name"] == player, "WAR"].iloc[0]
+#     percentile = np.sum(sorted_data["WAR"] <= player_war) / len(sorted_data["WAR"]) * 100
+#     return round(percentile, 2)
 
+# # Example usage
+# data = pybaseball.batting_stats(2023)
+# player = "Shohei Ohtani"  # Specify the player's name
+
+# player_percentile = get_player_percentile(data, player)
+# print(f"{player}'s WAR is in the {player_percentile}th percentile.")
+
+import pybaseball
+
+data = pybaseball.standings()
+print(data)
+
+# Example usage
 data = pybaseball.batting_stats(2023)
 player = "Shohei Ohtani"  # Specify the player's name
 
-player_percentile = get_player_percentile(data, player)
-print(f"{player}'s WAR is in the {player_percentile}th percentile.")
+# player_id = playerid_lookup("fernando", "tatis jr", fuzzy=True)
+# player_name = playerid_reverse_lookup(player_id, key_type='fangraphs')
+# print(player_name)

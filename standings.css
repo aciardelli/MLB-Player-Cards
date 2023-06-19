@@ -1,0 +1,162 @@
+:root{
+    --navy: #092C5C;
+    --sunglow: #F5D131;
+    --lightblue: #8FBCE6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Ubuntu", sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    color: rgb(51, 51, 51)
+}
+
+header{
+    text-align: center;
+    background-color: #092C5C;
+    margin-top: 0px;
+    padding: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    width: 575px;
+    align-items: center;
+}
+
+.nav1 {
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+    align-items: center;
+}
+
+.nav1 .nav-el {
+    color: #FFF;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+#mlb-logo {
+    height: 75px;
+    width: auto;
+}
+
+#rays-logo {
+    height: 100px;
+    width: auto;
+}
+
+header h1 {
+    font-size: 50px;
+    margin: 0px;
+    font-family: "Ubuntu";
+    color: #fff;
+}
+
+.chart {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    text-align: left;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.chart-head {
+    font-family: "Ubuntu";
+    font-weight: 700;
+    font-size: 30px;
+    padding: 20px;
+}
+
+.al-heading {
+    display: flex;
+    height: 90px;
+    background-color: #EE0A46;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#al-logo {
+    height: 70px;
+    width: auto;
+    margin: 10px;
+}
+
+.al-heading p {
+    color: #fff;
+    font-family: "Ubuntu";
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20px;
+}
+
+.nl-heading {
+    display: flex;
+    height: 90px;
+    background-color: #0E4082;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#nl-logo {
+    height: 70px;
+    width: auto;
+    margin: 10px;
+}
+
+.nl-heading p {
+    color: #fff;
+    font-family: "Ubuntu";
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20px;
+}
+
+.division-head {
+    background-color: #DCDCDC;
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.division-head button {
+    height: auto;
+    width: 50px;
+}
+
+.division-head p{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.division-table {
+    padding-bottom: 10px;
+}
+
+.division-table th {
+    padding-left: 20px;
+}
+
+.division-table td {
+    padding-left: 20px;
+}
