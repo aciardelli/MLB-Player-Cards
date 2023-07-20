@@ -17,10 +17,8 @@ mycol = mydb["Standings"]
 
 def insert_data():
     try:
-
-        data = pybaseball.standings()
         standings = {}
-
+        order = []
         data = pybaseball.standings()
 
         divisions = ["ALE", "ALC", "ALW", "NLE", "NLC", "NLW"]
@@ -28,9 +26,9 @@ def insert_data():
         for i in range(6):
             all_standings[divisions[i]] = data[i].to_dict()
 
-
         for division, division_data in all_standings.items():
             standings[division] = {}
+            order = []
             for team_id, team_name in division_data["Tm"].items():
                 standings[division][team_name] = {
                     "W": division_data["W"][team_id],
@@ -38,7 +36,11 @@ def insert_data():
                     "W-L%": division_data["W-L%"][team_id],
                     "GB": division_data["GB"][team_id]
                 }
-        standings["NLC"]["St Louis Cardinals"] = standings["NLC"].pop("St. Louis Cardinals")
+                if team_name == "St. Louis Cardinals":
+                    team_name == "St Louis Cardinals"
+                order.append(team_name)
+                standings[division]["Order"] = order
+        # standings["NLC"]["St Louis Cardinals"] = standings["NLC"].pop("St. Louis Cardinals")
         standings["Date"] = CURRENT_DATE
         x = mycol.insert_one(standings)
         print("Data successfully added")
@@ -62,7 +64,7 @@ def run_daily(date):
         for c in cursor:
             if c["Date"] == date:
                 raise Exception("Standings have already been added for today") 
-        insert_data(mycol)
+        insert_data()
     except Exception as e:
         print(e)
 
@@ -76,6 +78,6 @@ def get_standings(league):
     except Exception as e:
         print(e)
             
-# delete_data(mycol, CURRENT_DATE)
-# run_daily(CURRENT_DATE)
-print(get_standings("ALE"))
+# delete_data(CURRENT_DATE)
+run_daily(CURRENT_DATE)
+# print(get_standings("ALE"))

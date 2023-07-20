@@ -8,15 +8,14 @@ async function loadTable(division){
     const tableBody = table.querySelector(body)
     const response = await fetch(url)
     const data = await response.json();
-    //const data = {'Tm': {1: 'Atlanta Braves', 2: 'Miami Marlins', 3: 'Philadelphia Phillies', 4: 'New York Mets', 5: 'Washington Nationals'}, 'W': {1: '45', 2: '40', 3: '37', 4: '33', 5: '27'}, 'L': {1: '26', 2: '31', 3: '34', 4: '37', 5: '42'}, 'W-L%': {1: '.634', 2: '.563', 3: '.521', 4: '.471', 5: '.391'}, 'GB': {1: '--', 2: '5.0', 3: '8.0', 4: '11.5', 5: '17.0'}}
-    console.log(data)
     
-
     // clear table
     tableHead.innerHTML = '<tr></tr>'
     tableBody.innerHTML = ''
 
-    const desiredOrder = ['Tm', 'W', 'L', 'W-L%', 'GB']
+    const desiredOrder = ['Team', 'W', 'L', 'W-L%', 'GB']
+
+    const teamOrder = data["Order"];
     
     // headers
     for (const key of desiredOrder) {
@@ -27,15 +26,19 @@ async function loadTable(division){
 
     }
 
-    // rows
-    for(let i = 1; i < 6; i++){
+    for(let i = 0; i < 5; i++){
         const rowElement = document.createElement("tr")
+        const teamData = data[teamOrder[i]]
+
         for(const key of desiredOrder){
             const cellElement = document.createElement("td")
-
-            cellElement.textContent = data[key][i]
+            if (key === 'Team'){
+              cellElement.textContent = teamOrder[i]
+            }
+            else{
+              cellElement.textContent = teamData[key]
+            }
             rowElement.appendChild(cellElement)
-
         }
         tableBody.appendChild(rowElement)
     }
@@ -49,12 +52,13 @@ window.addEventListener("load", () => {
     // const nle_data = {'Tm': {1: 'Atlanta Braves', 2: 'Miami Marlins', 3: 'Philadelphia Phillies', 4: 'New York Mets', 5: 'Washington Nationals'}, 'W': {1: '45', 2: '40', 3: '37', 4: '33', 5: '27'}, 'L': {1: '26', 2: '31', 3: '34', 4: '37', 5: '42'}, 'W-L%': {1: '.634', 2: '.563', 3: '.521', 4: '.471', 5: '.391'}, 'GB': {1: '--', 2: '5.0', 3: '8.0', 4: '11.5', 5: '17.0'}}
     // const nlc_data = {'Tm': {1: 'Atlanta Braves', 2: 'Miami Marlins', 3: 'Philadelphia Phillies', 4: 'New York Mets', 5: 'Washington Nationals'}, 'W': {1: '45', 2: '40', 3: '37', 4: '33', 5: '27'}, 'L': {1: '26', 2: '31', 3: '34', 4: '37', 5: '42'}, 'W-L%': {1: '.634', 2: '.563', 3: '.521', 4: '.471', 5: '.391'}, 'GB': {1: '--', 2: '5.0', 3: '8.0', 4: '11.5', 5: '17.0'}}
     // const nlw_data = {'Tm': {1: 'Atlanta Braves', 2: 'Miami Marlins', 3: 'Philadelphia Phillies', 4: 'New York Mets', 5: 'Washington Nationals'}, 'W': {1: '45', 2: '40', 3: '37', 4: '33', 5: '27'}, 'L': {1: '26', 2: '31', 3: '34', 4: '37', 5: '42'}, 'W-L%': {1: '.634', 2: '.563', 3: '.521', 4: '.471', 5: '.391'}, 'GB': {1: '--', 2: '5.0', 3: '8.0', 4: '11.5', 5: '17.0'}}
-    const ale_data = getStandings("ale")   
-    const alc_data = getStandings("alc")
-    const alw_data = getStandings("alw")
-    const nle_data = getStandings("nle")
-    const nlc_data = getStandings("nlc")
-    const nlw_data = getStandings("nlw")
+    
+    // const ale_data = getStandings("ale")   
+    // const alc_data = getStandings("alc")
+    // const alw_data = getStandings("alw")
+    // const nle_data = getStandings("nle")
+    // const nlc_data = getStandings("nlc")
+    // const nlw_data = getStandings("nlw")
 
     const ale_load = document.querySelector(".ale-drop")
     const alc_load = document.querySelector(".alc-drop")

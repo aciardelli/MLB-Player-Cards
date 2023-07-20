@@ -1,12 +1,20 @@
 import pybaseball
 import pandas as pd
 import numpy as np
-
+import difflib
 # player_name, player_id, year, xwoba, xba, xslg, xiso, xobp, brl, brl_percent, exit_velocity, hard_hit_percent, k_percent, bb_percent
 # whiff_percent, sprint_speed, oaa
 
 # want:
 # xwoba, brl_percent, exit_velocity, hard_hit_percent, k_percent, bb_percent, whiff_percent, sprint_speed, oaa
+
+# player search
+def closest_player(player):
+    fangraphs_players = pybaseball.batting_stats(2023, qual = 100)["Name"]
+    statcast_players = pybaseball.statcast_batter_percentile_ranks(2023)["player_name"]
+    fangraphs_closest = difflib.get_close_matches(player, fangraphs_players)
+    statcast_closest = difflib.get_close_matches(player, statcast_players)
+    return [fangraphs_closest[0], statcast_closest[0]]
 
 def statcast_percentiles(player):
     data = pybaseball.statcast_batter_percentile_ranks(2023)
@@ -31,8 +39,10 @@ def get_player_percentile(data, player):
     return round(percentile, 0)
 
 def merge_stats(player):
-    statDict = statcast_percentiles(player)
-    fg_stats = fangraphs_stats(player)
+    player_fangraphs, player_statcast = closest_player(player)
+
+    statDict = statcast_percentiles(player_statcast)
+    fg_stats = fangraphs_stats(player_fangraphs)
     statDict['fwar'] = fg_stats[0]
     statDict['fwar_pct'] = fg_stats[1]
     print(statDict)
