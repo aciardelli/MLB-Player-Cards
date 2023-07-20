@@ -15,7 +15,7 @@ client = MongoClient(uri)
 mydb = client["MLB-Standings"]
 mycol = mydb["Standings"]
 
-def insert_data(col):
+def insert_data():
     try:
 
         data = pybaseball.standings()
@@ -40,31 +40,42 @@ def insert_data(col):
                 }
         standings["NLC"]["St Louis Cardinals"] = standings["NLC"].pop("St. Louis Cardinals")
         standings["Date"] = CURRENT_DATE
-        x = col.insert_one(standings)
+        x = mycol.insert_one(standings)
         print("Data successfully added")
     except Exception as e:
         print(e)
 
 # insert_data(mycol)
-def delete_data(col, date):
+def delete_data(date):
     try:
-        cursor = col.find()
+        cursor = mycol.find()
         for c in cursor:
             if c["Date"] == date:
-                col.delete_one(c)
+                mycol.delete_one(c)
         print("Data successfully deleted")
     except Exception as e:
         print(e)
 
-def run_daily(col, date):
+def run_daily(date):
     try:
-        cursor = col.find()
+        cursor = mycol.find()
         for c in cursor:
             if c["Date"] == date:
                 raise Exception("Standings have already been added for today") 
-        insert_data(col)
+        insert_data(mycol)
     except Exception as e:
         print(e)
 
+def get_standings(league):
+    try:
+        cursor = mycol.find()
+        for c in cursor:
+            if c["Date"] == CURRENT_DATE:
+                return c[league]
+        raise Exception("No standings for that date exist")
+    except Exception as e:
+        print(e)
+            
 # delete_data(mycol, CURRENT_DATE)
-run_daily(mycol, CURRENT_DATE)
+# run_daily(CURRENT_DATE)
+print(get_standings("ALE"))

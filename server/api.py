@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from data import *
+from standings_database import get_standings
 
 app = Flask(__name__)
 CORS(app)
@@ -13,7 +14,7 @@ def playerData(player_name):
 
 @app.route("/standings/<string:league>", methods=["GET"])
 def getStandings(league):
-    data = standings_stats(league)
+    data = get_standings(league)
     return data
 
 if __name__ == "__main__":

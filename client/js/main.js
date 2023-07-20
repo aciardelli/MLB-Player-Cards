@@ -57,7 +57,7 @@ async function loadHTML() {
     // player pic div
     const player_img_el = document.createElement("img");
     player_img_el.classList.add("player-img");
-    player_img_el.src = "./pictures/blank_headshot.jpeg";
+    player_img_el.src = "../pictures/blank_headshot.jpeg";
     player_img_el.alt = "Image of " + player;
 
     // stat-box div
