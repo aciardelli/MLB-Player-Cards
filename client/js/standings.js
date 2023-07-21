@@ -46,19 +46,6 @@ async function loadTable(division){
 }
 
 window.addEventListener("load", () => {
-    // const ale_data = {'Tm': {1: 'Atlanta Braves', 2: 'Miami Marlins', 3: 'Philadelphia Phillies', 4: 'New York Mets', 5: 'Washington Nationals'}, 'W': {1: '45', 2: '40', 3: '37', 4: '33', 5: '27'}, 'L': {1: '26', 2: '31', 3: '34', 4: '37', 5: '42'}, 'W-L%': {1: '.634', 2: '.563', 3: '.521', 4: '.471', 5: '.391'}, 'GB': {1: '--', 2: '5.0', 3: '8.0', 4: '11.5', 5: '17.0'}}   
-    // const alc_data = {'Tm': {1: 'Atlanta Braves', 2: 'Miami Marlins', 3: 'Philadelphia Phillies', 4: 'New York Mets', 5: 'Washington Nationals'}, 'W': {1: '45', 2: '40', 3: '37', 4: '33', 5: '27'}, 'L': {1: '26', 2: '31', 3: '34', 4: '37', 5: '42'}, 'W-L%': {1: '.634', 2: '.563', 3: '.521', 4: '.471', 5: '.391'}, 'GB': {1: '--', 2: '5.0', 3: '8.0', 4: '11.5', 5: '17.0'}}
-    // const alw_data = {'Tm': {1: 'Atlanta Braves', 2: 'Miami Marlins', 3: 'Philadelphia Phillies', 4: 'New York Mets', 5: 'Washington Nationals'}, 'W': {1: '45', 2: '40', 3: '37', 4: '33', 5: '27'}, 'L': {1: '26', 2: '31', 3: '34', 4: '37', 5: '42'}, 'W-L%': {1: '.634', 2: '.563', 3: '.521', 4: '.471', 5: '.391'}, 'GB': {1: '--', 2: '5.0', 3: '8.0', 4: '11.5', 5: '17.0'}}
-    // const nle_data = {'Tm': {1: 'Atlanta Braves', 2: 'Miami Marlins', 3: 'Philadelphia Phillies', 4: 'New York Mets', 5: 'Washington Nationals'}, 'W': {1: '45', 2: '40', 3: '37', 4: '33', 5: '27'}, 'L': {1: '26', 2: '31', 3: '34', 4: '37', 5: '42'}, 'W-L%': {1: '.634', 2: '.563', 3: '.521', 4: '.471', 5: '.391'}, 'GB': {1: '--', 2: '5.0', 3: '8.0', 4: '11.5', 5: '17.0'}}
-    // const nlc_data = {'Tm': {1: 'Atlanta Braves', 2: 'Miami Marlins', 3: 'Philadelphia Phillies', 4: 'New York Mets', 5: 'Washington Nationals'}, 'W': {1: '45', 2: '40', 3: '37', 4: '33', 5: '27'}, 'L': {1: '26', 2: '31', 3: '34', 4: '37', 5: '42'}, 'W-L%': {1: '.634', 2: '.563', 3: '.521', 4: '.471', 5: '.391'}, 'GB': {1: '--', 2: '5.0', 3: '8.0', 4: '11.5', 5: '17.0'}}
-    // const nlw_data = {'Tm': {1: 'Atlanta Braves', 2: 'Miami Marlins', 3: 'Philadelphia Phillies', 4: 'New York Mets', 5: 'Washington Nationals'}, 'W': {1: '45', 2: '40', 3: '37', 4: '33', 5: '27'}, 'L': {1: '26', 2: '31', 3: '34', 4: '37', 5: '42'}, 'W-L%': {1: '.634', 2: '.563', 3: '.521', 4: '.471', 5: '.391'}, 'GB': {1: '--', 2: '5.0', 3: '8.0', 4: '11.5', 5: '17.0'}}
-    
-    // const ale_data = getStandings("ale")   
-    // const alc_data = getStandings("alc")
-    // const alw_data = getStandings("alw")
-    // const nle_data = getStandings("nle")
-    // const nlc_data = getStandings("nlc")
-    // const nlw_data = getStandings("nlw")
 
     const ale_load = document.querySelector(".ale-drop")
     const alc_load = document.querySelector(".alc-drop")
@@ -142,12 +129,5 @@ window.addEventListener("load", () => {
         }
     })
 
-    
-    // loadTable("ale")   
-    // loadTable("alc")
-    // loadTable("alw")
-    // loadTable("nle")
-    // loadTable("nlc")
-    // loadTable("nlw")
   });
 
