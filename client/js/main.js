@@ -57,7 +57,8 @@ async function loadHTML() {
     // player pic div
     const player_img_el = document.createElement("img");
     player_img_el.classList.add("player-img");
-    player_img_el.src = "../pictures/blank_headshot.jpeg";
+    // player_img_el.src = "../pictures/blank_headshot.jpeg";
+    player_img_el.src = "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/" + playerStats.id + "/headshot/67/current";
     player_img_el.alt = "Image of " + player;
 
     // stat-box div
@@ -90,14 +91,14 @@ async function loadHTML() {
     player_statbox2_el.style.backgroundColor = calculateColor(
       playerStats.xwoba
     );
-    console.log(calculateColor(playerStats.xwoba));
+    // console.log(calculateColor(playerStats.xwoba));
 
     // oaa p
     const player_oaa_el = document.createElement("p");
     player_oaa_el.classList.add("oaa");
     player_oaa_el.innerText = "OAA\n" + playerStats.oaa + "%";
     player_statbox3_el.style.backgroundColor = calculateColor(playerStats.oaa);
-    console.log(calculateColor(playerStats.oaa));
+    // console.log(calculateColor(playerStats.oaa));
 
     // actions (buttons)
     const player_actions_el = document.createElement("div");
