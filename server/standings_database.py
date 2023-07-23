@@ -1,13 +1,13 @@
 import pybaseball
 from pymongo.mongo_client import MongoClient
-from datetime import date, timedelta
+import datetime
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
 mongopass = os.getenv("MONGODB_PASSWORD")
-CURRENT_DATE = str(date.today())
+CURRENT_DATE = str(datetime.date.today())
 
 uri = f"mongodb+srv://anthciardelli:{mongopass}@mlb-standings.onjc4lo.mongodb.net/?retryWrites=true&w=majority"
 # Create a new client and connect to the server
@@ -59,13 +59,16 @@ def delete_data(date):
         print(e)
 
 def run_daily(date):
+    file = open(r'C:\Users\Anthony\GitHub\MLB-Player-Cards\server\standings_log.txt', 'a')
     try:
         cursor = mycol.find()
         for c in cursor:
             if c["Date"] == date:
                 raise Exception("Standings have already been added for today") 
         insert_data()
+        file.write(f'{datetime.datetime.now()} - The script successfully ran\n')
     except Exception as e:
+        file.write(f'{datetime.datetime.now()} - The script did not run \nError message: {e}')
         print(e)
 
 def get_standings(league):
@@ -78,6 +81,4 @@ def get_standings(league):
     except Exception as e:
         print(e)
             
-# delete_data(CURRENT_DATE)
 run_daily(CURRENT_DATE)
-# print(get_standings("ALE"))

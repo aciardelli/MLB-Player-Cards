@@ -51,7 +51,7 @@ header{
 .nav-el:hover {
     text-decoration: underline;
     cursor: pointer;
-    transform: scale(1.2);
+    /* transform: scale(1.2); */
 }
 
 .nav-el:active {

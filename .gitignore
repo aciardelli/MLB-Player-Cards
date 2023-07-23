@@ -1,2 +1,4 @@
 .env
 text.json
+standings_log.txt
+player_ids.csv
