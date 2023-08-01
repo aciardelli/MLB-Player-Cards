@@ -68,7 +68,7 @@ def run_daily(date):
         insert_data()
         file.write(f'{datetime.datetime.now()} - The script successfully ran\n')
     except Exception as e:
-        file.write(f'{datetime.datetime.now()} - The script did not run \nError message: {e}')
+        file.write(f'{datetime.datetime.now()} - The script did not run - Error message: {e}\n')
         print(e)
 
 def get_standings(league):
