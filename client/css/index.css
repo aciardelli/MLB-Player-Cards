@@ -48,6 +48,14 @@ header{
     font-size: 1.5em;
 }
 
+.nav-el {
+    text-decoration: none;
+}
+
+.nav-el {
+    transition: text-decoration 0.3s ease;
+}
+
 .nav-el:hover {
     text-decoration: underline;
     cursor: pointer;
@@ -106,19 +114,30 @@ input, button {
 
 .player-submit {
     cursor: pointer;
-    margin-right: 10px;
+    color: #FFF;
     font-weight: 700;
-    /* height: 40px; */
-    /* margin-top: 10px; */
     font-size: 15px;
+    /* background-color: #46E312; */
+    background-color: #000;
+    border-radius: 20px;
+    height: 40px;
+    margin: 10px 0px 10px 0px;
+    width: 100px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .player-submit:hover {
-    opacity: .8;
+    /* color: #46E312; */
+    color: #000;
+    border-width: 2px;
+    /* border-color: #46E312; */
+    border-color: #000;
+    background-color: #FFF;
+    border-style: solid;
 }
 
 .player-submit:active {
-    opacity: .6;
+    opacity: .7;
 }
 
 main {
@@ -224,13 +243,32 @@ main {
 
 .remove-all {
     cursor: pointer;
+    color: #FFF;
     font-weight: 700;
     font-size: 15px;
+    /* background-color: red; */
+    background-color: #000;
+    border-radius: 20px;
+    height: 40px;
+    width: 120px;
+    margin: 5px 0px 5px 0px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .remove-all:hover {
-    color: red;
+    /* color: red; */
+    color: #000;
+    background-color: #FFF;
+    /* border-color: red; */
+    border-color: #000;
+    border-width: 2px;
+    border-style: solid;
 }
+
+.remove-all:active {
+    opacity: .7;
+}
+
 
 /* .player .actions .percentiles {
     cursor: pointer;
@@ -275,10 +313,6 @@ body{
     width: 500px;
     font-size: 30px;
     border-radius: 10px;
-}
-
-.player-submit{
-
 }
 
 .playerID{
