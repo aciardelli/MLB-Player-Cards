@@ -5,6 +5,16 @@ async function loadHTML() {
 
   const remove_all = document.querySelector(".remove-all");
 
+  const playerCardTemplate = document.getElementById("player-card-template");
+
+  remove_all.addEventListener("click", () => {
+    console.log("Removed all");
+    const players = document.querySelectorAll(".player");
+    players.forEach((player) => {
+      list_el.removeChild(player);
+    });
+  });
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -13,145 +23,78 @@ async function loadHTML() {
     if (!player) {
       return;
     }
-    /*
-        <!-- <div class="player">
 
-                <div class="content">
+    const loadingCard = document.createElement("div");
+    loadingCard.classList.add("player-loading");
 
-                    <p class="player-name">Joe Random</p>
-                    <div class = "stats">
-                        <div class="stat-box">
-                            <p class="avg">Avg</p><br>
-                            <p class="avg-val">.300</p>
-                        </div>
-                        <div class="stat-box">
-                            <p class="ops">OPS</p><br>
-                            <p class="ops-val">.850</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="actions">
-                    <button class="remove">Remove</button>
-                </div>
+    const loadingIndicator = document.createElement("div");
+    loadingIndicator.classList.add("loading-indicator");
 
-            </div> -->
-    */
-    const playerStats = await getStats(player);
-    // player div
-    const player_el = document.createElement("div");
-    player_el.classList.add("player");
+    const loadingIcon = document.createElement("img");
+    loadingIcon.id = "loading-img";
+    loadingIcon.src = "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif";
+    loadingIcon.alt = "Loading icon";
 
-    // content div
-    const player_content_el = document.createElement("div");
-    player_content_el.classList.add("content");
+    const loadingText = document.createElement("p");
+    loadingText.textContent = "Loading...";
 
-    // player-name div
-    const player_name_el = document.createElement("p");
-    player_name_el.classList.add("player-name");
-    player_name_el.innerText = player;
+    loadingIndicator.appendChild(loadingIcon);
+    loadingIndicator.appendChild(loadingText);
+    loadingCard.appendChild(loadingIndicator);
 
-    // stats div
-    const player_stats_el = document.createElement("div");
-    player_stats_el.classList.add("stats");
+    // Show the loading card while waiting for the player data
+    list_el.appendChild(loadingCard);
 
-    // player pic div
-    const player_img_el = document.createElement("img");
-    player_img_el.classList.add("player-img");
-    // player_img_el.src = "../pictures/blank_headshot.jpeg";
-    player_img_el.src = "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/" + playerStats.id + "/headshot/67/current";
-    player_img_el.alt = "Image of " + player;
+    try {
+      const playerStats = await getStats(player);
 
-    // stat-box div
-    const player_statbox1_el = document.createElement("div");
-    player_statbox1_el.classList.add("stat-box");
-
-    const player_statbox2_el = document.createElement("div");
-    player_statbox2_el.classList.add("stat-box");
-
-    const player_statbox3_el = document.createElement("div");
-    player_statbox3_el.classList.add("stat-box");
-
-    // fWar p
-    const player_fwar_el = document.createElement("p");
-    player_fwar_el.classList.add("fwar");
-    player_fwar_el.innerText = "fWAR\n" + playerStats.fwar;
-
-    // fWar % p
-    const player_fwar_pct = document.createElement("p");
-    player_fwar_pct.classList.add("fwar");
-    player_fwar_pct.innerText = playerStats.fwar_pct + "%";
-    player_statbox1_el.style.backgroundColor = calculateColor(
-      playerStats.fwar_pct
-    );
-
-    // xWOBA p
-    const player_xwoba_el = document.createElement("p");
-    player_xwoba_el.classList.add("xwoba");
-    player_xwoba_el.innerText = "xWOBA\n" + playerStats.xwoba + "%";
-    player_statbox2_el.style.backgroundColor = calculateColor(
-      playerStats.xwoba
-    );
-    // console.log(calculateColor(playerStats.xwoba));
-
-    // oaa p
-    const player_oaa_el = document.createElement("p");
-    player_oaa_el.classList.add("oaa");
-    player_oaa_el.innerText = "OAA\n" + playerStats.oaa + "%";
-    player_statbox3_el.style.backgroundColor = calculateColor(playerStats.oaa);
-    // console.log(calculateColor(playerStats.oaa));
-
-    // actions (buttons)
-    const player_actions_el = document.createElement("div");
-    player_actions_el.classList.add("actions");
-
-    const player_remove_btn = document.createElement("button");
-    player_remove_btn.classList.add("remove");
-    player_remove_btn.innerText = "Remove";
-
-    // adds remove button to actions
-    player_actions_el.appendChild(player_remove_btn);
-
-    //adding fwar to statbox1
-    player_statbox1_el.appendChild(player_fwar_el);
-    player_statbox1_el.appendChild(player_fwar_pct);
-
-    // adding xwoba to statbox2
-    player_statbox2_el.appendChild(player_xwoba_el);
-
-    // adding oaa to statbox3
-    player_statbox3_el.appendChild(player_oaa_el);
-
-    // add statboxes to stats
-    player_stats_el.appendChild(player_img_el);
-    player_stats_el.appendChild(player_statbox1_el);
-    player_stats_el.appendChild(player_statbox2_el);
-    player_stats_el.appendChild(player_statbox3_el);
-
-    // adds player name to content
-    player_content_el.appendChild(player_name_el);
-
-    // adds stats to content
-    player_content_el.appendChild(player_stats_el);
-
-    // adds content to player
-    player_el.appendChild(player_content_el);
-
-    // adds remove btn to player
-    player_el.appendChild(player_actions_el);
-
-    list_el.appendChild(player_el);
-
-    player_remove_btn.addEventListener("click", () => {
-      list_el.removeChild(player_el);
-    });
-
-    remove_all.addEventListener("click", () => {
-      console.log("Submit button clicked!");
-      const players = document.querySelectorAll(".player");
-      players.forEach((player) => {
-        list_el.removeChild(player);
+      list_el.removeChild(loadingCard)
+      // list_el.removeChild(loadingCard);
+  
+      const playerCard = playerCardTemplate.content.cloneNode(true);
+  
+      // Find elements within the template and update their content
+      const playerNameElement = playerCard.querySelector(".player-name");
+      playerNameElement.innerText = player;
+  
+      const playerImageElement = playerCard.querySelector(".player-img")
+      playerImageElement.src = "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/" + playerStats.id + "/headshot/67/current";
+      playerImageElement.alt = "Image of " + player;
+  
+      const fwarElement = playerCard.querySelector("#fwar");
+      fwarElement.innerText = `fWAR\n${playerStats.fwar}`;
+      fwarElement.style.backgroundColor = calculateColor(playerStats.fwar_pct);
+  
+      const xwobaElement = playerCard.querySelector("#xwoba");
+      xwobaElement.innerText = `xWOBA\n${playerStats.xwoba}%`;
+      xwobaElement.style.backgroundColor = calculateColor(playerStats.xwoba);
+  
+      const oaaElement = playerCard.querySelector("#oaa");
+      oaaElement.innerText = `OAA\n${playerStats.oaa}%`;
+      oaaElement.style.backgroundColor = calculateColor(playerStats.oaa);
+  
+      const player_actions = playerCard.querySelector(".actions");
+  
+      const player_remove_btn = document.createElement("button");
+      player_remove_btn.classList.add("remove");
+      player_remove_btn.innerText = "Remove";
+  
+      player_actions.appendChild(player_remove_btn);
+  
+      player_remove_btn.addEventListener("click", () => {
+        const playerDiv = player_remove_btn.closest(".player");
+        list_el.removeChild(playerDiv);
+        console.log("Removed")
       });
-    });
+  
+      list_el.appendChild(playerCard);
+
+    } catch (error) {
+      console.error(error);
+      // Handle any error that occurs during loading
+      list_el.removeChild(loadingCard);
+      alert("Failed to load player data. Please try again.");
+    }
   });
 }
 

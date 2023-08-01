@@ -178,6 +178,10 @@ main {
     color: #000;
 }
 
+.content {
+    display: flex;
+}
+
 #players .player .content .player-name {
     font-size: 20px;
     display: block;
@@ -269,58 +273,22 @@ main {
     opacity: .7;
 }
 
-
-/* .player .actions .percentiles {
-    cursor: pointer;
-    margin: 0 -5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: .4s;
-} */
-
-
-
-/* #mlb-logo{
-    width: 100px;
-    height: auto;
-    float: left;
+.player-loading {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+  
+  /* Style for the loading indicator */
+.loading-indicator {
+/* Add any styles for the loading indicator, e.g., spinner or loading text */
+align-items: center;
+justify-content: center;
+height: 120px;
 }
 
-#rays-logo{
-    width: 100px;
-    height: auto;
-    float: right;
+#loading-img {
+    width: auto;
+    height: 80px;
 }
-
-
-
-/* .player-select{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 50vh;
-    font-family: "Ubuntu";
-}
-
-body{
-    background-color: #8FBCE6;
-    margin: 0px
-}
-
-.player-name{
-    height: 50px;
-    width: 500px;
-    font-size: 30px;
-    border-radius: 10px;
-}
-
-.playerID{
-    font-size: 30px;
-}
-
-label{
-    font-size: 30px;
-    margin-bottom: 10px;
-} */
-

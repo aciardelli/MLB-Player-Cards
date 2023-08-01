@@ -1,72 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Ubuntu&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
     <title>MLB Player Cards</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="title">
-            <img id="mlb-logo" src="../pictures/Major_League_Baseball_logo.png" alt="MLB Logo">
-            <h1>MLB Player Cards</h1>
-        </div>
-        <div class="nav1">
-            <input type="submit" class="nav-el" value="Home" onclick="location.href='index.html';">
-            <input type="submit" class="nav-el" value="Standings" onclick="location.href='standings.html';">
-            <input type="submit" class="nav-el" value="About">
-        </div>
-        <!-- <img id="rays-logo" src="./pictures/rays_logo.png" alt="Tampa Bay Rays Logo"> -->
+      <div class="title">
+        <img
+          id="mlb-logo"
+          src="../pictures/Major_League_Baseball_logo.png"
+          alt="MLB Logo"
+        />
+        <h1>MLB Player Cards</h1>
+      </div>
+      <div class="nav1">
+        <input
+          type="submit"
+          class="nav-el"
+          value="Home"
+          onclick="location.href='index.html';"
+        />
+        <input
+          type="submit"
+          class="nav-el"
+          value="Standings"
+          onclick="location.href='standings.html';"
+        />
+        <input type="submit" class="nav-el" value="About" />
+      </div>
+      <!-- <img id="rays-logo" src="./pictures/rays_logo.png" alt="Tampa Bay Rays Logo"> -->
     </header>
     <form id="new-player-form">
-        <!-- <label for="playerName">Choose a player:</label> -->
-        <input type="text" class="player-input" placeholder="Input a player">
-        <input type="submit" class="player-submit" value="ADD">
+      <!-- <label for="playerName">Choose a player:</label> -->
+      <input type="text" class="player-input" placeholder="Input a player" />
+      <input type="submit" class="player-submit" value="ADD" />
     </form>
     <main>
-        <section class="player-list">
-            <div class="list-heading">
-                <h2>Players</h2>
-                <button class="remove-all">REMOVE ALL</button>
+      <section class="player-list">
+        <div class="list-heading">
+          <h2>Players</h2>
+          <button class="remove-all">REMOVE ALL</button>
+        </div>
+        <hr />
+        <div id="players">
+
+          <template id="loading-card-template">
+            <div class="player-loading">
+              <div class="loading-indicator">
+                <img id="loading-img" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Loading icon">
+                <p>Loading...</p>
+              </div>
             </div>
-            <hr>
-            <div id="players">
+          </template>
 
-                <!-- <div class="player">
-
-                    <div class="content">
-                      <p class="player-name">Joe Random</p>
-
-                      
-                      <div class = "stats">
-                          <img src="./pictures/blank_headshot.jpeg" alt="player headshot" class="player-img">
-                          <div class="stat-box">
-                                <p class="fwar">xWOBA</p><br>
-                                <p class="fwar-val">.300</p>
-                            </div>
-                            <div class="stat-box">
-                                <p class="xwoba">xWOBA</p><br>
-                                <p class="xwoba-pct">.300</p>
-                            </div>
-                            <div class="stat-box">
-                                <p class="oaa">OAA</p><br>
-                                <p class="oaa-pct">99</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="actions">
-                        <button class="remove">Remove</button>
-                    </div>
-
-                </div> -->
-
+          <template id="player-card-template">
+            <div class="player">
+              <div class="content">
+                <div class="player-bio">
+                  <p class="player-name"></p>
+                  <img class="player-img" />
+                </div>
+                <div class="stats">
+                  <div class="stat-box" id="fwar"></div>
+                  <div class="stat-box" id="xwoba"></div>
+                  <div class="stat-box" id="oaa"></div>
+                </div>
+              </div>
+              <div class="actions">
+                <!-- <button class="remove">Remove</button> -->
+              </div>
             </div>
-
-        </section>
+          </template>
+        </div>
+      </section>
     </main>
     <script src="../js/main.js"></script>
-</body>
+  </body>
 </html>
