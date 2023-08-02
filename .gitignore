@@ -1,4 +1,6 @@
 .env
 text.json
 standings_log.txt
-player_ids.csv
+server/player_ids.csv
+server/__pycache__
+__pycache__
