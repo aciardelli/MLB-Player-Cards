@@ -10,7 +10,7 @@ import difflib
 # xwoba, brl_percent, exit_velocity, hard_hit_percent, k_percent, bb_percent, whiff_percent, sprint_speed, oaa
 
 # TESTING
-pd.set_option('display.max_columns', None)
+# pd.set_option('display.max_columns', None)
 # print(pybaseball.statcast_batter_percentile_ranks(2023))
 # print(pybaseball.statcast_batter_expected_stats(2023))
 # print(pybaseball.statcast_batter_exitvelo_barrels(2023))
@@ -35,7 +35,7 @@ def find_player_id(player):
 
 def load_data(name):
     df = pd.read_csv('player_ids.csv')[['Name', 'MLBAMID', 'FangraphsID', 'Team', 'ESPN_POS']]
-    df = df[df.Name == name]
+    df = df[df['Name'].str.lower() == name.lower()]
     # print(df.head)
     return df
 
