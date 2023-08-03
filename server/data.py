@@ -79,11 +79,13 @@ def merge_stats(player):
     statDict['id'] = str(statcast_id)
     return statDict
 
-#### standings
+##################### TESTING
+def get_statcast_percentiles(player_id):
+    return 0
 
-def standings_stats(league):
-    leagues = {"ALE":0, "ALC":1, "ALW":2, "NLE":3, "NLC":4, "NLW":5}
-    my_league = leagues[league]
-    data = pybaseball.standings()
-    my_data = data[my_league]
-    return my_data.to_dict()
+# pd.set_option('display.max_columns', None)
+# data = pybaseball.statcast_batter_exitvelo_barrels(2023)
+# data = pybaseball.statcast_batter_expected_stats(2023)
+# data = pybaseball.statcast_batter_percentile_ranks(2023)
+# data = pybaseball.batting_stats(2023)
+# print(data)
