@@ -8,6 +8,8 @@ load_dotenv()
 
 mongopass = os.getenv("MONGODB_PASSWORD")
 CURRENT_DATE = str(datetime.date.today())
+now = datetime.datetime.now()
+CURRENT_TIME = str(now.time())
 
 uri = f"mongodb+srv://anthciardelli:{mongopass}@mlb-standings.onjc4lo.mongodb.net/?retryWrites=true&w=majority"
 # Create a new client and connect to the server
@@ -42,6 +44,7 @@ def insert_data():
                 standings[division]["Order"] = order
         # standings["NLC"]["St Louis Cardinals"] = standings["NLC"].pop("St. Louis Cardinals")
         standings["Date"] = CURRENT_DATE
+        standings["Time"] = CURRENT_TIME
         x = mycol.insert_one(standings)
         print("Data successfully added")
     except Exception as e:
