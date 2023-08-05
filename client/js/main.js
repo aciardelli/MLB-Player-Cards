@@ -3,6 +3,46 @@ async function loadHTML() {
   const input = document.querySelector(".player-input");
   const list_el = document.querySelector("#players");
 
+  const suggestionBox = document.querySelector(`.suggestionBox`)
+  const playerForm = document.querySelector(`.player-input`);
+  const loadSuggestions = async () => {
+    const playerNamesRequest = await fetch(`http://127.0.0.1:5000/players-list`)
+    let playerNames = await playerNamesRequest.json()
+    let input = playerForm.value
+    let result = []
+    if(input.length){
+      result = playerNames.filter((names) => {
+        return names.toLowerCase().substring(0,input.length).includes(input.toLowerCase())
+      })
+    }
+    return result
+  }
+
+  const loadSuggestionBox = async () => {
+    const results = await loadSuggestions();
+  
+    // Use slice to get the first 5 items
+    const firstFiveResults = results.slice(0, 5);
+  
+    const html = firstFiveResults.map((name) => {
+      return `<div class="suggestionItem">${name}</div>`;
+    });
+  
+    suggestionBox.innerHTML = html.join(""); // Join the array of HTML strings into a single string
+
+    const suggestionItems = suggestionBox.querySelectorAll(".suggestionItem");
+
+    // Add click event listener to each suggestionItem
+    suggestionItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        playerForm.value = item.innerHTML; // Submit the form when the suggestionItem is clicked
+        suggestionBox.innerHTML = '';
+      });
+    });
+  };
+  
+  playerForm.addEventListener("keyup", function() {loadSuggestionBox()});
+
   const remove_all = document.querySelector(".remove-all");
 
   const playerCardTemplate = document.getElementById("player-card-template");
@@ -137,5 +177,6 @@ async function getStats(player) {
 }
 
 window.addEventListener("load", () => {
+  
   loadHTML();
 });

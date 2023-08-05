@@ -17,6 +17,10 @@ def getStandings(league):
     data = get_standings(league)
     return data
 
+@app.route("/players-list", methods=["GET"])
+def getPlayerList():
+    return get_player_list()
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
 
