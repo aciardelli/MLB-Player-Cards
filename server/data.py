@@ -37,17 +37,6 @@ def get_fangraph_percentile(data, player_id, stat):
         stat_percentile = 100 - stat_percentile
     return stat_percentile
 
-# def get_fangraph_batter_percentile(data, player_id):
-#     # gets fwar%
-#     sorted_data = data.sort_values("WAR", ascending=False)
-#     player_war = sorted_data.loc[sorted_data["IDfg"] == player_id, "WAR"].iloc[0]
-#     fwar_percentile = round(np.sum(sorted_data["WAR"] <= player_war) / len(sorted_data["WAR"]) * 100, 0)
-
-#     # gets wrc+%
-#     sorted_data = data.sort_values("wRC+", ascending=False)
-#     player_wrc = sorted_data.loc[sorted_data["IDfg"] == player_id, "wRC+"].iloc[0]
-#     wrc_percentile = round(np.sum(sorted_data["wRC+"] <= player_wrc) / len(sorted_data["wRC+"]) * 100, 0)
-
 #     return (fwar_percentile, wrc_percentile)
 
 def fangraphs_batter_stats(fg_id):
@@ -72,7 +61,7 @@ def fangraphs_batter_stats(fg_id):
     except:
         return pd.DataFrame(0, columns=stats)
     
-def frangraphs_pitcher_stats(fg_id):
+def fangraphs_pitcher_stats(fg_id):
     stats = ["WAR", "K/9", "BB/9", "FIP", "GB%", "SIERA", "K-BB%", "CSW%"]
     try:
         data = pybaseball.pitching_stats(2023)
@@ -89,7 +78,8 @@ def frangraphs_pitcher_stats(fg_id):
     except:
         return pd.DataFrame(0, columns=stats)
     
-# print(frangraphs_pitcher_stats(27498))
+    
+# print(fangraphs_pitcher_stats(27498))
     
 def statcast_batter_stats(statcast_id):
     expected_stats = ['est_woba']
@@ -129,8 +119,7 @@ def all_stats(player):
         fg_data = fangraphs_batter_stats(fangraphs_id)
         statcast_data = statcast_batter_stats(statcast_id)
         merge_df = pd.concat([fg_data, statcast_data], axis=0)
-        merge_df['img'] = f'https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/{statcast_id}/headshot/67/current'
-        
+
         # dictionary fixes
         stats_dict =  merge_df.to_dict()
         stats_dict['wRC'] = stats_dict.pop('wRC+')
@@ -139,8 +128,9 @@ def all_stats(player):
 
     else:
         # data
-        fg_data = frangraphs_pitcher_stats(fangraphs_id)
+        fg_data = fangraphs_pitcher_stats(fangraphs_id)
 
+        # dictionary fixes
         stats_dict = fg_data.to_dict()
         stats_dict['K9'] = stats_dict.pop('K/9')
         stats_dict['BB9'] = stats_dict.pop('BB/9')
@@ -157,7 +147,7 @@ def all_stats(player):
     stats_dict['pos'] = pos
     return stats_dict 
 
-# print(all_stats("Spencer Strider"))
+print(all_stats("Wander Franco"))
 
 ########################################## OLD BACKEND
 
@@ -200,6 +190,7 @@ def merge_stats(player):
     statDict['fwar_pct'] = fg_stats[1]
     statDict['id'] = str(statcast_id)
     return statDict
+
 
 
 #################### testing lab batting
