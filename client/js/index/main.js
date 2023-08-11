@@ -1,5 +1,5 @@
-import { handleFormSubmission } from './formSubmission.js';
-import { getPlayers, loadSuggestionBox } from './suggestionBox.js';
+import { handleFormSubmission } from '../formSubmission.js';
+import { getPlayers, loadSuggestionBox } from '../suggestionBox.js';
 
 async function loadHTML() {
   // suggestion box
