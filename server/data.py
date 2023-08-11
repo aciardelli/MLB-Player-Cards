@@ -103,6 +103,10 @@ def statcast_batter_stats(statcast_id):
         percentile_batter_data = percentile_data.loc[percentile_data.player_id == statcast_id]
         percentile_batter_data = percentile_batter_data[percentile_stats].iloc[0]
 
+        # oaa check
+        if(np.isnan(percentile_batter_data['oaa'])):
+            percentile_batter_data['oaa'] = 'None'
+
         merge_df = pd.concat([expected_batter_data, percentile_batter_data], axis=0)
         return merge_df
     except:
@@ -212,7 +216,7 @@ def merge_stats(player):
 # data = pybaseball.statcast_batter_percentile_ranks(2023) #xwoba, brl, k_percent, bb_percent, sprint_speed, oaa
 
 # FANGRAPHS
-# data = pybaseball.batting_stats(2023) # BB%, K%, wRC+, WAR, 
+# data = pybaseball.batting_stats(2023, qual=200) # BB%, K%, wRC+, WAR, 
 
 # okay so we want fWAR, wRC+, xwoba, K%, BB%, brl, oaa, drs, sprint speed
 
