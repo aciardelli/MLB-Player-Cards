@@ -71,11 +71,6 @@ header{
     width: auto;
 }
 
-#rays-logo {
-    height: 100px;
-    width: auto;
-}
-
 header h1 {
     font-size: 50px;
     margin: 0px;
@@ -313,4 +308,8 @@ height: 120px;
 .suggestionItem:hover {
     background-color: #8FBCE6;
     cursor: pointer;
+}
+
+.player-bio {
+    width: 150px;
 }
