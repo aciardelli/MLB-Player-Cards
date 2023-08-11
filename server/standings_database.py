@@ -62,7 +62,7 @@ def delete_data(date):
         print(e)
 
 def run_daily(date):
-    file = open(r'C:\Users\Anthony\GitHub\MLB-Player-Cards\server\standings_log.txt', 'a')
+    file = open(r'C:\Users\Anthony\GitHub\MLB-Player-Cards\server\logs\standings_log.txt', 'a')
     try:
         cursor = mycol.find()
         for c in cursor:

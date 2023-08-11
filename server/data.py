@@ -39,10 +39,15 @@ def load_data(name):
     # print(df.head)
     return df
 
+# def get_player_list():
+#     df = pybaseball.statcast_batter_exitvelo_barrels(2023)
+#     full_names = [f"{first.strip()} {last.strip()}" for first, last in zip(df['first_name'], df['last_name'])]
+#     return full_names
+
 def get_player_list():
-    df = pybaseball.statcast_batter_exitvelo_barrels(2023)
-    full_names = [f"{first.strip()} {last.strip()}" for first, last in zip(df['first_name'], df['last_name'])]
-    return full_names
+    df = pd.read_csv("./players/active_players.csv")
+    names = df["Name"].to_list()
+    return names
 
 #############################################################
 
