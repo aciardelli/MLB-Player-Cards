@@ -98,20 +98,41 @@ async function loadHTML() {
       playerNameElement.innerText = player;
   
       const playerImageElement = playerCard.querySelector(".player-img")
-      playerImageElement.src = "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/" + playerStats.id + "/headshot/67/current";
+      // playerImageElement.src = "https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/" + playerStats.id + "/headshot/67/current";
+      playerImageElement.src = playerStats.img;
       playerImageElement.alt = "Image of " + player;
   
       const fwarElement = playerCard.querySelector("#fwar");
-      fwarElement.innerText = `fWAR\n${playerStats.fwar}`;
+      fwarElement.innerText = `fWAR\n${playerStats.WAR}\n${playerStats.fwar_pct}%`;
       fwarElement.style.backgroundColor = calculateColor(playerStats.fwar_pct);
+
+      const wrcElement = playerCard.querySelector("#wrc");
+      wrcElement.innerText = `wRC+\n${playerStats.wRC}\n${playerStats.wrc_pct}%`;
+      wrcElement.style.backgroundColor = calculateColor(playerStats.wrc_pct);
   
       const xwobaElement = playerCard.querySelector("#xwoba");
-      xwobaElement.innerText = `xWOBA\n${playerStats.xwoba}%`;
+      xwobaElement.innerText = `xWOBA\n${playerStats.est_woba}\n${playerStats.xwoba}%`;
       xwobaElement.style.backgroundColor = calculateColor(playerStats.xwoba);
+
+      const kElement = playerCard.querySelector("#k");
+      kElement.innerText = `K%\n${playerStats.k_rate}\n${playerStats.k_percent}%`;
+      kElement.style.backgroundColor = calculateColor(playerStats.k_percent);
+
+      const bbElement = playerCard.querySelector("#bb");
+      bbElement.innerText = `BB%\n${playerStats.bb_rate}\n${playerStats.bb_percent}%`;
+      bbElement.style.backgroundColor = calculateColor(playerStats.bb_percent);
+
+      const brlElement = playerCard.querySelector("#brl");
+      brlElement.innerText = `Brl%\n${playerStats.brl}%`;
+      brlElement.style.backgroundColor = calculateColor(playerStats.brl);
   
       const oaaElement = playerCard.querySelector("#oaa");
       oaaElement.innerText = `OAA\n${playerStats.oaa}%`;
       oaaElement.style.backgroundColor = calculateColor(playerStats.oaa);
+
+      const sprintElement = playerCard.querySelector("#sprint");
+      sprintElement.innerText = `Sprint Speed\n${playerStats.sprint_speed}%`;
+      sprintElement.style.backgroundColor = calculateColor(playerStats.sprint_speed);
   
       const player_actions = playerCard.querySelector(".actions");
   

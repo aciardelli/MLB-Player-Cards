@@ -9,7 +9,8 @@ CORS(app)
 @app.route("/player/<string:player_name>", methods=["GET"])
 def playerData(player_name):
     player_name = player_name.replace("-"," ")
-    data = merge_stats(player_name)
+    # data = merge_stats(player_name)
+    data = all_stats(player_name)
     return jsonify(data)
 
 @app.route("/standings/<string:league>", methods=["GET"])
