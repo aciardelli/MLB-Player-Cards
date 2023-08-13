@@ -147,7 +147,7 @@ def all_stats(player):
     stats_dict['pos'] = pos
     return stats_dict 
 
-print(all_stats("Wander Franco"))
+# print(all_stats("Wander Franco"))
 
 ########################################## OLD BACKEND
 

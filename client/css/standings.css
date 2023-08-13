@@ -70,11 +70,6 @@ input, button {
     width: auto;
 }
 
-#rays-logo {
-    height: 100px;
-    width: auto;
-}
-
 header h1 {
     font-size: 50px;
     margin: 0px;
@@ -98,16 +93,41 @@ header h1 {
     padding: 20px;
 }
 
+.leagues {
+    display: flex;
+    margin: 20px;
+    justify-content: space-between;
+}
+
+.league-chart{
+    margin-bottom: 20px;
+    width: 49%;
+}
+
 .al-heading {
     display: flex;
-    height: 90px;
+    height: 100px;
     background-color: #EE0A46;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+}
+
+.nl-heading {
+    display: flex;
+    height: 100px;
+    background-color: #0E4082;
+    border-radius: 5px;
+    margin-bottom: 2px;
 }
 
 #al-logo {
-    height: 70px;
+    height: 80px;
+    width: auto;
+    margin: 10px;
+}
+
+#nl-logo {
+    height: 80px;
     width: auto;
     margin: 10px;
 }
@@ -120,20 +140,6 @@ header h1 {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 20px;
-}
-
-.nl-heading {
-    display: flex;
-    height: 90px;
-    background-color: #0E4082;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-#nl-logo {
-    height: 70px;
-    width: auto;
-    margin: 10px;
 }
 
 .nl-heading p {
@@ -150,10 +156,10 @@ header h1 {
     background-color: #DCDCDC;
     display: flex;
     justify-content: space-between;
-    height: 30px;
+    height: 40px;
+    margin: 0px 10px 0px 10px;
     padding-left: 20px;
-    margin-bottom: 10px;
-    border-radius: 10px;
+    /* border: 1px solid #000; */
 }
 
 .division-head button {
@@ -167,15 +173,16 @@ header h1 {
 }
 
 .division-table {
-    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
-
 .division-table th {
     padding-left: 20px;
+    /* height: 20px; */
 }
 
 .division-table td {
     padding-left: 20px;
+    /* height: 20px; */
 }
 
 .chart button {
