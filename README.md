@@ -13,5 +13,15 @@ I wanted to create a webpage that would display statistics like Fangraphs but wo
 * More batting stats available
 
 # Credits
-Created by me
+Created by me <br>
 Uses Fangraphs and Baseball Savant data through Pybaseball
+
+# Installations
+'''pip install pybaseball'''
+'''pip install flask'''
+'''pip install flask_cors'''
+'''pip install numpy''''
+'''pip install pandas'''
+As of 8/22/2023 pybaseball needs to be downloaded locally because the pybaseball library for fangraphs doesn't work at the moment. <br>
+It can be downloaded anywhere on your computer and installed using 'pip install pybaseball .' <br>
+Also need to setup a MongoDB collection in order for the standings to work.
