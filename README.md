@@ -17,13 +17,13 @@ Created by me <br>
 Uses Fangraphs and Baseball Savant data through Pybaseball
 
 # Installations
-'''
+```
 pip install pybaseball
 pip install flask
 pip install flask_cors
 pip install numpy
 pip install pandas
-'''
+```
 <br>
 As of 8/22/2023 pybaseball needs to be downloaded locally because the pybaseball library for fangraphs doesn't work at the moment. <br>
 It can be downloaded anywhere on your computer and installed using 'pip install pybaseball .' <br>
